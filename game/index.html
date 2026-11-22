@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Duel — a card battler</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- Title screen -->
+  <section id="title-screen">
+    <div class="title-glyphs"><span class="g ember">▲</span><span class="g tide">●</span><span class="g grove">◆</span><span class="g stone">■</span></div>
+    <h1>EMBER DUEL</h1>
+    <p class="tagline">Four elements. One table. No mercy.</p>
+    <button id="play-button" class="big-button">Play</button>
+    <button id="title-howto" class="link-button">How to play</button>
+    <div id="howto" class="hidden">
+      <p><b>Goal:</b> reduce Ashwarden's life from 30 to 0 before yours falls.</p>
+      <p><b>Each turn</b> you gain embers (mana) and draw a card. Play creatures onto your side of the table, then attack with them.</p>
+      <p><b>Combat:</b> a creature deals its attack to its target; a creature target hits back. A creature cannot attack the turn it is played, unless it is <b>Swift</b>.</p>
+      <p><b>Elements:</b> <span class="e ember">▲ Ember</span> beats <span class="e grove">◆ Grove</span> beats <span class="e stone">■ Stone</span> beats <span class="e tide">● Tide</span> beats Ember. The stronger element deals +2 attack.</p>
+      <p><b>Guard</b> creatures must be attacked first. <b>Drain</b> heals your hero for the damage it deals. Spells strike, mend or draw.</p>
+      <p><b>Keys:</b> 1–7 play a card from your hand · Space ends your turn · Esc cancels a selection.</p>
+    </div>
+    <p class="footnote">An original game — Ember Duel. No network, no account, just the table.</p>
+  </section>
+
+  <!-- Table screen -->
+  <section id="table-screen" class="hidden">
+    <div id="foe-row" class="hero-row">
+      <div id="foe-hero" class="hero foe">
+        <div class="portrait">A</div>
+        <div class="hero-info">
+          <div class="hero-name">ASHWARDEN</div>
+          <div class="hero-life-wrap"><span class="hero-life">30</span><span class="hero-life-label">life</span></div>
+        </div>
+        <div class="mana-col"><div class="mana"></div><div class="hero-mana-text"></div></div>
+      </div>
+      <div id="foe-hand" class="foe-hand" title="Ashwarden's hand"></div>
+      <div id="turn-label" class="turn-label">Turn 1</div>
+    </div>
+
+    <div id="foe-board" class="board-row"></div>
+
+    <div id="mid-row">
+      <div id="log"></div>
+      <div id="wheel" title="Element wheel: Ember beats Grove, Grove beats Stone, Stone beats Tide, Tide beats Ember">
+        <span class="e ember">▲</span><span class="arrow">›</span><span class="e grove">◆</span><span class="arrow">›</span><span class="e stone">■</span><span class="arrow">›</span><span class="e tide">●</span><span class="arrow">›</span><span class="e ember">▲</span>
+      </div>
+    </div>
+
+    <div id="you-board" class="board-row"></div>
+
+    <div id="you-hand" class="hand"></div>
+
+    <div id="you-row" class="hero-row">
+      <div id="you-hero" class="hero you">
+        <div class="portrait">Y</div>
+        <div class="hero-info">
+          <div class="hero-name">YOU</div>
+          <div class="hero-life-wrap"><span class="hero-life">30</span><span class="hero-life-label">life</span></div>
+        </div>
+        <div class="mana-col"><div class="mana"></div><div class="hero-mana-text"></div></div>
+      </div>
+      <button id="end-turn" class="big-button">End Turn (Space)</button>
+    </div>
+    <div id="hint" class="hint">Click a card in your hand to play it. Click one of your creatures, then an enemy, to attack.</div>
+  </section>
+
+  <!-- End screen -->
+  <section id="end-screen" class="hidden">
+    <h1 id="end-title">VICTORY</h1>
+    <p id="end-sub"></p>
+    <p id="end-stats"></p>
+    <button id="again-button" class="big-button">Play Again</button>
+  </section>
+
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
